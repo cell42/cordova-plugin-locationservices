@@ -39,22 +39,22 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <framework src="com.google.android.gms:play-services-location:+" />
 
         <js-module src="www/Coordinates.js" name="Coordinates">
-            <clobbers target="cordova.plugins.locationServices.Coordinates" />
+            <clobbers target="navigator.geolocation.Coordinates" />
             <clobbers target="plugin.locationServices.Coordinates" />
         </js-module>
 
         <js-module src="www/PositionError.js" name="PositionError">
-            <clobbers target="cordova.plugins.locationServices.PositionError" />
+            <clobbers target="navigator.geolocation.PositionError" />
             <clobbers target="plugin.locationServices.PositionError" />
         </js-module>
 
         <js-module src="www/Position.js" name="Position">
-            <clobbers target="cordova.plugins.locationServices.PositionError" />
+            <clobbers target="navigator.geolocation.PositionError" />
             <clobbers target="plugin.locationServices.PositionError" />
         </js-module>
 
         <js-module src="www/LocationServices.js" name="LocationServices">
-            <clobbers target="cordova.plugins.locationServices.geolocation" />
+            <clobbers target="navigator.geolocation" />
             <clobbers target="plugin.locationServices.geolocation" />
         </js-module>
 
@@ -68,6 +68,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-feature android:name="android.hardware.location.gps" />
         </config-file>
 
         <source-file src="src/android/CordovaLocationListener.java" target-dir="src/fr/louisbl/cordova/locationservices" />
