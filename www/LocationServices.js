@@ -239,7 +239,13 @@ var LocationServices = {
       LocationServicesWithoutPermission.getCurrentPosition(successCallback, errorCallback, options);
     };
 
-    exec(win, errorCallback, 'LocationServices', 'getPermission', []);
+    var fail = function() {
+      if (errorCallback) {
+        errorCallback(new PositionError(PositionError.PERMISSION_DENIED, 'Illegal Access'));
+      }
+    };
+
+    exec(win, fail, 'LocationServices', 'getPermission', []);
   },
 
   watchPosition: function(successCallback, errorCallback, options) {
@@ -249,7 +255,13 @@ var LocationServices = {
       LocationServicesWithoutPermission.watchPosition(successCallback, errorCallback, options, watchId);
     };
 
-    exec(win, errorCallback, 'LocationServices', 'getPermission', []);
+    var fail = function() {
+      if (errorCallback) {
+        errorCallback(new PositionError(PositionError.PERMISSION_DENIED, 'Illegal Access'));
+      }
+    };
+
+    exec(win, fail, 'LocationServices', 'getPermission', []);
 
     return watchId;
   },
